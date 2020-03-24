@@ -1,26 +1,566 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import { fade, makeStyles } from "@material-ui/core/styles";
+
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import IconButton from "@material-ui/core/IconButton";
+import Typography from "@material-ui/core/Typography";
+import Badge from "@material-ui/core/Badge";
+import MenuItem from "@material-ui/core/MenuItem";
+import Menu from "@material-ui/core/Menu";
+
+import AccountCircle from "@material-ui/icons/AccountCircle";
+import MailIcon from "@material-ui/icons/Mail";
+import NotificationsIcon from "@material-ui/icons/Notifications";
+import MoreIcon from "@material-ui/icons/MoreVert";
+import PreviousIcon from "@material-ui/icons/ChevronLeft";
+import NextIcon from "@material-ui/icons/ChevronRight";
+import CloseIcon from "@material-ui/icons/Close";
+import { Grid, Grow, Slide, Collapse } from "@material-ui/core";
+
+const styles = makeStyles(theme => ({
+    logo: {
+        display: "flex",
+        justifyContent: "center",
+        height: "50vh",
+        padding: "50px",
+        background: "url('Jags Kitchen 37.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+    },
+
+    grow: {
+        flexGrow: 1
+    },
+    title: {
+        display: "block"
+    },
+    inputRoot: {
+        color: "inherit"
+    },
+    inputInput: {
+        padding: theme.spacing(1, 1, 1, 7),
+        transition: theme.transitions.create("width"),
+        width: "100%",
+        [theme.breakpoints.up("md")]: {
+            width: 200
+        }
+    },
+    sectionDesktop: {
+        display: "none",
+        [theme.breakpoints.up("md")]: {
+            display: "flex"
+        }
+    },
+    sectionMobile: {
+        display: "flex",
+        [theme.breakpoints.up("md")]: {
+            display: "none"
+        }
+    },
+    BigSlider: {
+        minHeight: "100vh",
+        overflow: "hidden",
+        position: "relative"
+    },
+    WeAreOn: {
+        minHeight: "25vh"
+    },
+    MenuList: {
+        minHeight: "100vh"
+    },
+    News: {
+        minHeight: "100vh"
+    },
+    Gallery: {
+        minHeight: "100vh"
+    },
+    ContactUs: {
+        minHeight: "100vh"
+    },
+
+    title: {
+        fontWeight: "bold",
+        fontSize: "4vw"
+    },
+
+    description: {
+        fontSize: "1.5vw"
+    },
+
+    faqTitle: {
+        fontSize: "3vw",
+        fontWeight: "bold"
+    },
+
+    faqContainer: {
+        padding: 30,
+        borderTop: "1px black solid",
+        borderBottom: "1px black solid"
+    },
+
+    questionContainer: {
+        display: "flex",
+        alignItems: "flex-start",
+        justifyContent: "space-between",
+        cursor: "pointer",
+        userSelect: "none"
+    },
+
+    question: {
+        fontWeight: "bold",
+        fontSize: "2vw"
+    },
+
+    container: {
+        margin: "-100px 15% 50px 15%",
+        padding: 50,
+        backgroundColor: "white",
+        borderRadius: 12,
+        boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)"
+    }
+}));
+
+function Navbar() {
+    const classes = styles();
+    const [anchorEl, setAnchorEl] = useState(null);
+    const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
+
+    const isMenuOpen = Boolean(anchorEl);
+    const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+
+    function handleProfileMenuOpen(event) {
+        setAnchorEl(event.currentTarget);
+    }
+
+    function handleMobileMenuClose() {
+        setMobileMoreAnchorEl(null);
+    }
+
+    function handleMenuClose() {
+        setAnchorEl(null);
+        handleMobileMenuClose();
+    }
+
+    function handleMobileMenuOpen(event) {
+        setMobileMoreAnchorEl(event.currentTarget);
+    }
+
+    const menuId = "primary-search-account-menu";
+    const renderMenu = (
+        <Menu
+            anchorEl={anchorEl}
+            anchorOrigin={{ vertical: "top", horizontal: "right" }}
+            id={menuId}
+            keepMounted
+            transformOrigin={{ vertical: "top", horizontal: "right" }}
+            open={isMenuOpen}
+            onClose={handleMenuClose}
+        >
+            <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+            <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+        </Menu>
+    );
+
+    const mobileMenuId = "primary-search-account-menu-mobile";
+    const renderMobileMenu = (
+        <Menu
+            anchorEl={mobileMoreAnchorEl}
+            anchorOrigin={{ vertical: "top", horizontal: "right" }}
+            id={mobileMenuId}
+            keepMounted
+            transformOrigin={{ vertical: "top", horizontal: "right" }}
+            open={isMobileMenuOpen}
+            onClose={handleMobileMenuClose}
+        >
+            <MenuItem>
+                <IconButton aria-label="Show 4 new mails" color="inherit">
+                    <Badge badgeContent={4} color="secondary">
+                        <MailIcon />
+                    </Badge>
+                </IconButton>
+                <p>Messages</p>
+            </MenuItem>
+            <MenuItem>
+                <IconButton
+                    aria-label="Show 11 new notifications"
+                    color="inherit"
+                >
+                    <Badge badgeContent={11} color="secondary">
+                        <NotificationsIcon />
+                    </Badge>
+                </IconButton>
+                <p>Notifications</p>
+            </MenuItem>
+            <MenuItem onClick={handleProfileMenuOpen}>
+                <IconButton
+                    aria-label="Account of current user"
+                    aria-controls="primary-search-account-menu"
+                    aria-haspopup="true"
+                    color="inherit"
+                >
+                    <AccountCircle />
+                </IconButton>
+                <p>Profile</p>
+            </MenuItem>
+        </Menu>
+    );
+
+    return (
+        <div className={classes.header}>
+            <AppBar position="fixed">
+                <Toolbar>
+                    <Typography className={classes.title} variant="h6" noWrap>
+                        Restaurant
+                    </Typography>
+                    <div className={classes.grow} />
+                    <div className={classes.sectionDesktop}>
+                        <IconButton
+                            aria-label="Show 4 new mails"
+                            color="inherit"
+                        >
+                            <Badge badgeContent={4} color="secondary">
+                                <MailIcon />
+                            </Badge>
+                        </IconButton>
+                        <IconButton
+                            aria-label="Show 17 new notifications"
+                            color="inherit"
+                        >
+                            <Badge badgeContent={17} color="secondary">
+                                <NotificationsIcon />
+                            </Badge>
+                        </IconButton>
+                        <IconButton
+                            edge="end"
+                            aria-label="Account of current user"
+                            aria-controls={menuId}
+                            aria-haspopup="true"
+                            onClick={handleProfileMenuOpen}
+                            color="inherit"
+                        >
+                            <AccountCircle />
+                        </IconButton>
+                    </div>
+                    <div className={classes.sectionMobile}>
+                        <IconButton
+                            aria-label="Show more"
+                            aria-controls={mobileMenuId}
+                            aria-haspopup="true"
+                            onClick={handleMobileMenuOpen}
+                            color="inherit"
+                        >
+                            <MoreIcon />
+                        </IconButton>
+                    </div>
+                </Toolbar>
+            </AppBar>
+            {renderMobileMenu}
+            {renderMenu}
+        </div>
+    );
+}
+
+function BigSlider() {
+    const classes = styles();
+
+    let [images, setImage] = useState([
+        {
+            image: "big_slider_1.jpg",
+            title: "Content 1",
+            description: "Desc Content 1"
+        },
+        {
+            image: "big_slider_2.jpg",
+            title: "Content 2",
+            description: "Desc Content 2"
+        },
+        {
+            image: "big_slider_3.jpg",
+            title: "Content 3",
+            description: "Desc Content 3"
+        }
+    ]);
+
+    let [currentIndex, setCurrentIndex] = useState(0);
+
+    useEffect(() => {
+        let timeOut = setTimeout(() => {
+            setCurrentIndex((currentIndex + 1) % images.length);
+        }, 6000);
+
+        document.querySelectorAll(
+            `#ActiveSlider-${currentIndex} #ContentWrapper-${(currentIndex -
+                1 +
+                images.length) %
+            images.length}`
+        )[0].style.animation = "none";
+
+        document.querySelectorAll(
+            `#ActiveSlider-${currentIndex} #Slider-${(currentIndex -
+                1 +
+                images.length) %
+            images.length}`
+        )[0].style.animation = "none";
+
+        return () => clearTimeout(timeOut);
+    });
+
+    useEffect(() => {
+        document.querySelectorAll(
+            `#ActiveSlider-${currentIndex} #ContentWrapper-${currentIndex}`
+        )[0].style.animation = "slide 1s linear 1";
+        document.querySelectorAll(
+            `#ActiveSlider-${currentIndex} #Slider-${currentIndex}`
+        )[0].style.animation = "fade 1s linear 1";
+    }, [currentIndex]);
+
+    return (
+        <div id={`ActiveSlider-${currentIndex}`} className={classes.BigSlider}>
+            <div
+                style={{
+                    display: "flex",
+                    position: "absolute",
+                    transform: `translateX(-${currentIndex *
+                        (100 / images.length)}%`,
+                    animation: "fade 1s linear 1"
+                }}
+            >
+                {images.map((image, key) => (
+                    <div
+                        id={`Slider-${key}`}
+                        key={key}
+                        style={{
+                            minWidth: "100vw",
+                            height: "100vh",
+                            backgroundImage: `url("${image.image}")`,
+                            backgroundPosition: "center",
+                            backgroundRepeat: "no-repeat",
+                            backgroundSize: "cover",
+                            position: "relative",
+                            flex: "1"
+                        }}
+                    >
+                        <div
+                            id={`ContentWrapper-${key}`}
+                            style={{
+                                position: "absolute",
+                                top: "25%",
+                                left: "5%"
+                            }}
+                        >
+                            <div
+                                style={{
+                                    background: "black",
+                                    margin: "10px",
+                                    padding: "20px",
+                                    width: "fit-content",
+                                    color: "white"
+                                }}
+                            >
+                                {image.title}
+                            </div>
+                            <div
+                                style={{
+                                    background: "black",
+                                    margin: "10px",
+                                    padding: "20px",
+                                    width: "fit-content",
+                                    color: "white"
+                                }}
+                            >
+                                {image.description}
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+            <div style={{ position: "absolute", top: "50%", left: "0" }}>
+                <IconButton
+                    color="secondary"
+                    onClick={() => {
+                        setCurrentIndex(
+                            (currentIndex - 1 + images.length) % images.length
+                        );
+                    }}
+                >
+                    <PreviousIcon />
+                </IconButton>
+            </div>
+            <div style={{ position: "absolute", top: "50%", right: "0" }}>
+                <IconButton
+                    color="secondary"
+                    onClick={() => {
+                        setCurrentIndex((currentIndex + 1) % images.length);
+                    }}
+                >
+                    <NextIcon />
+                </IconButton>
+            </div>
+        </div>
+    );
+}
+
+function WeAreOn() {
+    const classes = styles();
+
+    return (
+        <div className={classes.WeAreOn}>
+            <div style={{ textAlign: "center", marginBottom: "20px" }}>
+                <h1 style={{ textTransform: "uppercase" }}>We Are On</h1>
+            </div>
+            <div
+                style={{
+                    margin: "0 100px",
+                    minHeight: "10vh",
+                    display: "flex",
+                    alignItems: "center"
+                }}
+            >
+                <Grid container spacing={2}>
+                    <Grid item xs={6}>
+                        <div
+                            style={{
+                                border: "1px black solid",
+                                textAlign: "center"
+                            }}
+                        >
+                            Content 1
+                        </div>
+                    </Grid>
+                    <Grid item xs={6}>
+                        <div
+                            style={{
+                                border: "1px black solid",
+                                textAlign: "center"
+                            }}
+                        >
+                            Content 2
+                        </div>
+                    </Grid>
+                </Grid>
+            </div>
+        </div>
+    );
+}
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const classes = styles();
+    const [faq, setFaq] = useState({ 1: false, 2: false, 3: false });
+
+    console.log(faq)
+
+    const handleOpenFAQ = number => () => {
+        const newFaq = { ...faq, [number]: !faq[number] };
+
+        setFaq(newFaq)
+    }
+
+    return (
+        <Grid container spacing={1}>
+            <Grid item xs={12}>
+                <div className={classes.logo}>
+                    <a href="http://localhost:3000">
+                        <img id="logo-main" src="04.png" width="200" alt="Logo Thing main logo" />
+                    </a>
+                </div>
+            </Grid>
+            <Grid item xs={12}>
+                <div className={classes.container}>
+                    <Grid container spacing={3}>
+                        <Grid item xs={12}>
+                            <Typography align="center" variant="h4" className={classes.title}>JAG'S KITCHEN SIAP MELAYANI</Typography>
+                        </Grid>
+                        <Grid item xs={12}>
+                            <Typography className={classes.description} >
+                                Melihat perkembangan terkini terkait penyebaran virus COVID-19 (Coronavirus), kami menginformasikan bahwa JAG'S KITCHEN tetap akan beroperasi seperti biasa untuk melayani pelanggan dengan tetap mengedepankan aspek kesehatan untuk kenyamanan seluruh pelanggan.
+                            </Typography>
+                        </Grid>
+                        <Grid item xs={12}>
+                            <div style={{ paddingTop: 20 }}>
+                                <Grid container spacing={3}>
+                                    <Grid item xs={12}>
+                                        <Typography align="center" variant="h4" className={classes.faqTitle}>FAQ</Typography>
+                                    </Grid>
+                                    <Grid item xs={12}>
+                                        <Grid container spacing={2}>
+                                            <Grid item xs={12}>
+                                                <div className={classes.faqContainer}>
+                                                    <div className={classes.questionContainer} onClick={handleOpenFAQ(1)}>
+                                                        <Typography className={classes.question}>Apakah JAG'S KITCHEN akan tetap buka?</Typography>
+                                                        <CloseIcon style={{ transform: faq[1] ? "rotate(0deg)" : "rotate(-135deg)", transition: "0.5s transform" }} />
+                                                    </div>
+                                                    <Collapse in={faq[1]}>
+                                                        <div style={{ paddingTop: 20 }}>
+                                                            <Typography className={classes.answer}>Ya, JAG'S KITCHEN kami akan tetap beroperasi seperti biasa dan siap melayani pelanggan.</Typography>
+                                                        </div>
+                                                    </Collapse>
+                                                </div>
+                                            </Grid>
+                                            <Grid item xs={12}>
+                                                <div className={classes.faqContainer}>
+                                                    <div className={classes.questionContainer} onClick={handleOpenFAQ(2)}>
+                                                        <Typography className={classes.question}>Langkah apa yang sudah dilakukan untuk memastikan kesehatan dan kebersihan di JAG'S KITCHEN?</Typography>
+                                                        <CloseIcon style={{ transform: faq[2] ? "rotate(0deg)" : "rotate(-135deg)", transition: "0.5s transform" }} />
+                                                    </div>
+                                                    <Collapse in={faq[2]}>
+                                                        <div style={{ paddingTop: 20 }}>
+                                                            <ul>
+                                                                <li>Pengecekan suhu tubuh bagi petugas SPBU. Petugas dengan suhu tubuh di atas 37,3°C akan dipulangkan untuk beristirahat.</li>
+                                                                <li>
+                                                                    Pembersihan dan penyemprotan disinfektan di area yang sering tersentuh tangan, termasuk:
+                                                                    <ul>
+                                                                        <li>
+                                                                            Area layanan: Handle pintu, toilet, mesin EDC dan ATM
+                                                                        </li>
+                                                                        <li>
+                                                                            Area dispenser: Nozzle
+                                                                        </li>
+                                                                    </ul>
+                                                                </li>
+                                                                <li>Menyediakan hand sanitizer di beberapa area SPBU.</li>
+                                                                <li>Menginstruksikan kepada pramusaji JAG'S KITCHEN untuk menjaga kebersihan diri dan cuci tangan dengan air mengalir dan sabun secara rutin.</li>
+                                                                <li>Menyediakan alternatif pembayaran dengan dompet digital.</li>
+                                                            </ul>
+                                                        </div>
+                                                    </Collapse>
+                                                </div>
+                                            </Grid>
+                                            <Grid item xs={12}>
+                                                <div className={classes.faqContainer}>
+                                                    <div className={classes.questionContainer} onClick={handleOpenFAQ(3)}>
+                                                        <Typography className={classes.question}>Di mana saya bisa mencari informasi lebih lanjut tentang COVID-19?</Typography>
+                                                        <CloseIcon style={{ transform: faq[3] ? "rotate(0deg)" : "rotate(-135deg)", transition: "0.5s transform" }} />
+                                                    </div>
+                                                    <Collapse in={faq[3]}>
+                                                        <div style={{ paddingTop: 20 }}>
+                                                            <ul>
+                                                                <li>
+                                                                    Informasi lebih lanjut bisa dilihat di:
+                                                                    <ul>
+                                                                        <li>
+                                                                            <a target="_blank" href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public">The World Health Organization</a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a target="_blank" href="https://www.kemkes.go.id/article/view/20012900002/Kesiapsiagaan-menghadapi-Infeksi-Novel-Coronavirus.html">Kementrian Kesehatan Republik Indonesia</a>
+                                                                        </li>
+                                                                    </ul>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </Collapse>
+                                                </div>
+                                            </Grid>
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
+                            </div>
+                        </Grid>
+                    </Grid>
+                </div>
+            </Grid>
+        </Grid>
+    );
 }
 
 export default App;
