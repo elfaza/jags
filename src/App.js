@@ -601,10 +601,10 @@ function App() {
                                                                     <img src="/jags_1.jpeg" style={{ width: "100%", borderRadius: 12 }} />
                                                                 </Grid>
                                                                 <Grid item sm={6} md={4}>
-                                                                    <img src="/jags_2.jpeg" style={{ width: "100%", borderRadius: 12 }} />
+                                                                    <img src="/jags_3.jpeg" style={{ width: "100%", borderRadius: 12 }} />
                                                                 </Grid>
                                                                 <Grid item sm={6} md={4}>
-                                                                    <img src="/jags_3.jpeg" style={{ width: "100%", borderRadius: 12 }} />
+                                                                    <img src="/jags_2.jpeg" style={{ width: "100%", borderRadius: 12 }} />
                                                                 </Grid>
                                                             </Grid>
                                                         </div>
