@@ -590,7 +590,7 @@ function App() {
                                                                     </ul>
                                                                 </li>
                                                                 <li>Menyediakan hand sanitizer di beberapa area.</li>
-                                                                <li>Menginstruksikan kepada pramusaji JAG'S KITCHEN untuk menjaga kebersihan diri dan cuci tangan dengan air mengalir dan sabun secara rutin.</li>
+                                                                <li>Menginstruksikan kepada staff JAG'S KITCHEN untuk menjaga kebersihan diri dan cuci tangan dengan air mengalir dan sabun secara rutin.</li>
                                                                 <li>Menyediakan alternatif pembayaran dengan dompet digital.</li>
                                                             </ul>
                                                         </div>
