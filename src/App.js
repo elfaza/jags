@@ -178,7 +178,7 @@ const styles = makeStyles(theme => ({
             padding: 20,
             margin: "-135px 10% 50px 10%"
         },
-        [theme.breakpoints.up('sm')]: {
+        [theme.breakpoints.only('sm')]: {
             padding: 30,
             margin: "-155px 10% 50px 10%"
         },
