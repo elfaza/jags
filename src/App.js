@@ -568,19 +568,19 @@ function App() {
                                                     <Collapse in={faq[2]}>
                                                         <div style={{ paddingTop: 10 }}>
                                                             <ul className={classes.answerQuestion2}>
-                                                                <li>Pengecekan suhu tubuh bagi customer dan pegawai. Customer atau pegawai dengan suhu tubuh di atas 37,3°C akan dipulangkan untuk beristirahat.</li>
+                                                                <li>Pengecekan suhu tubuh bagi customer dan pegawai. Customer atau pegawai dengan suhu tubuh di atas 37.5°C akan dipulangkan untuk beristirahat.</li>
                                                                 <li>
                                                                     Pembersihan dan penyemprotan disinfektan di area yang sering tersentuh tangan, termasuk:
                                                                     <ul>
                                                                         <li>
-                                                                            Area layanan: Handle pintu, toilet, mesin EDC dan ATM
+                                                                            Area layanan: Handle pintu, toilet, mesin EDC dan ATM(cabang jagakarsa)
                                                                         </li>
                                                                         <li>
                                                                             Area dispenser: Nozzle
                                                                         </li>
                                                                     </ul>
                                                                 </li>
-                                                                <li>Menyediakan hand sanitizer di beberapa area SPBU.</li>
+                                                                <li>Menyediakan hand sanitizer di beberapa area.</li>
                                                                 <li>Menginstruksikan kepada pramusaji JAG'S KITCHEN untuk menjaga kebersihan diri dan cuci tangan dengan air mengalir dan sabun secara rutin.</li>
                                                                 <li>Menyediakan alternatif pembayaran dengan dompet digital.</li>
                                                             </ul>
@@ -598,10 +598,10 @@ function App() {
                                                         <div style={{ paddingTop: 15 }}>
                                                             <Grid container spacing={2}>
                                                                 <Grid item sm={6} md={4}>
-                                                                    <img src="/jags_2.jpeg" style={{ width: "100%", borderRadius: 12 }} />
+                                                                    <img src="/jags_1.jpeg" style={{ width: "100%", borderRadius: 12 }} />
                                                                 </Grid>
                                                                 <Grid item sm={6} md={4}>
-                                                                    <img src="/jags_1.jpeg" style={{ width: "100%", borderRadius: 12 }} />
+                                                                    <img src="/jags_2.jpeg" style={{ width: "100%", borderRadius: 12 }} />
                                                                 </Grid>
                                                                 <Grid item sm={6} md={4}>
                                                                     <img src="/jags_3.jpeg" style={{ width: "100%", borderRadius: 12 }} />
