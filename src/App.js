@@ -27,6 +27,20 @@ const styles = makeStyles(theme => ({
         background: "url('Jags Kitchen 37.jpg')",
         backgroundSize: "cover",
         backgroundPosition: "center",
+
+        [theme.breakpoints.down('xs')]: {
+            padding: "20px 10px 10px 10px",
+
+            "& a": {
+                display: "flex",
+                alignItems: "baseline",
+                justifyContent: "center"
+            },
+
+            "& img": {
+                width: 150
+            }
+        },
     },
 
     grow: {
@@ -81,22 +95,38 @@ const styles = makeStyles(theme => ({
 
     title: {
         fontWeight: "bold",
-        fontSize: "4vw"
+        borderBottom: "2px #fecb00 solid",
+        paddingBottom: 5,
+        margin: "0px 15%",
+
+        [theme.breakpoints.down('xs')]: {
+            fontSize: "12px",
+        },
     },
 
     description: {
-        fontSize: "1.5vw"
+
+        [theme.breakpoints.down('xs')]: {
+            fontSize: "10px",
+        },
     },
 
     faqTitle: {
-        fontSize: "3vw",
-        fontWeight: "bold"
+        fontWeight: "bold",
+
+        [theme.breakpoints.down('xs')]: {
+            fontSize: "12px",
+        },
     },
 
     faqContainer: {
         padding: 30,
-        borderTop: "1px black solid",
-        borderBottom: "1px black solid"
+        borderTop: "1px lightgrey solid",
+        borderBottom: "1px lightgrey solid",
+
+        [theme.breakpoints.down('xs')]: {
+            padding: 10
+        },
     },
 
     questionContainer: {
@@ -104,12 +134,38 @@ const styles = makeStyles(theme => ({
         alignItems: "flex-start",
         justifyContent: "space-between",
         cursor: "pointer",
-        userSelect: "none"
+        userSelect: "none",
+
+        "& svg": {
+            fontSize: 20,
+            marginLeft: 5,
+            color: "#fecb00"
+        }
     },
 
     question: {
         fontWeight: "bold",
-        fontSize: "2vw"
+
+        [theme.breakpoints.down('xs')]: {
+            fontSize: "10px",
+        },
+    },
+
+    answerQuestion1: {
+        [theme.breakpoints.down('xs')]: {
+            fontSize: "10px",
+        },
+    },
+
+    answerQuestion2: {
+        [theme.breakpoints.down('xs')]: {
+            fontSize: "10px",
+            paddingLeft: 15
+        },
+
+        "& li": {
+            paddingBottom: 5
+        }
     },
 
     container: {
@@ -117,8 +173,16 @@ const styles = makeStyles(theme => ({
         padding: 50,
         backgroundColor: "white",
         borderRadius: 12,
-        boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)"
-    }
+        boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
+        [theme.breakpoints.down('xs')]: {
+            padding: 20,
+            margin: "-135px 10% 50px 10%"
+        },
+        [theme.breakpoints.up('sm')]: {
+            padding: 30,
+            margin: "-155px 10% 50px 10%"
+        },
+    },
 }));
 
 function Navbar() {
@@ -448,8 +512,6 @@ function App() {
     const classes = styles();
     const [faq, setFaq] = useState({ 1: false, 2: false, 3: false });
 
-    console.log(faq)
-
     const handleOpenFAQ = number => () => {
         const newFaq = { ...faq, [number]: !faq[number] };
 
@@ -473,11 +535,11 @@ function App() {
                         </Grid>
                         <Grid item xs={12}>
                             <Typography className={classes.description} >
-                                Melihat perkembangan terkini terkait penyebaran virus COVID-19 (Coronavirus), kami menginformasikan bahwa JAG'S KITCHEN tetap akan beroperasi seperti biasa untuk melayani pelanggan dengan tetap mengedepankan aspek kesehatan untuk kenyamanan seluruh pelanggan.
+                                Melihat perkembangan terkini terkait penyebaran virus COVID-19 (Coronavirus), kami menginformasikan bahwa JAG'S KITCHEN tetap akan beroperasi untuk melayani pelanggan dengan tetap mengedepankan aspek kesehatan untuk kenyamanan seluruh pelanggan.
                             </Typography>
                         </Grid>
                         <Grid item xs={12}>
-                            <div style={{ paddingTop: 20 }}>
+                            <div >
                                 <Grid container spacing={3}>
                                     <Grid item xs={12}>
                                         <Typography align="center" variant="h4" className={classes.faqTitle}>FAQ</Typography>
@@ -487,12 +549,12 @@ function App() {
                                             <Grid item xs={12}>
                                                 <div className={classes.faqContainer}>
                                                     <div className={classes.questionContainer} onClick={handleOpenFAQ(1)}>
-                                                        <Typography className={classes.question}>Apakah JAG'S KITCHEN akan tetap buka?</Typography>
+                                                        <Typography className={classes.question} style={{ color: faq[1] && "#fecb00" }}>Apakah JAG'S KITCHEN akan tetap buka?</Typography>
                                                         <CloseIcon style={{ transform: faq[1] ? "rotate(0deg)" : "rotate(-135deg)", transition: "0.5s transform" }} />
                                                     </div>
                                                     <Collapse in={faq[1]}>
-                                                        <div style={{ paddingTop: 20 }}>
-                                                            <Typography className={classes.answer}>Ya, JAG'S KITCHEN kami akan tetap beroperasi seperti biasa dan siap melayani pelanggan.</Typography>
+                                                        <div style={{ paddingTop: 15 }}>
+                                                            <Typography className={classes.answerQuestion1}>Ya, JAG'S KITCHEN kami akan tetap beroperasi dan siap melayani pelanggan.</Typography>
                                                         </div>
                                                     </Collapse>
                                                 </div>
@@ -500,13 +562,13 @@ function App() {
                                             <Grid item xs={12}>
                                                 <div className={classes.faqContainer}>
                                                     <div className={classes.questionContainer} onClick={handleOpenFAQ(2)}>
-                                                        <Typography className={classes.question}>Langkah apa yang sudah dilakukan untuk memastikan kesehatan dan kebersihan di JAG'S KITCHEN?</Typography>
+                                                        <Typography className={classes.question} style={{ color: faq[2] && "#fecb00" }} >Langkah apa yang sudah dilakukan untuk memastikan kesehatan dan kebersihan di JAG'S KITCHEN?</Typography>
                                                         <CloseIcon style={{ transform: faq[2] ? "rotate(0deg)" : "rotate(-135deg)", transition: "0.5s transform" }} />
                                                     </div>
                                                     <Collapse in={faq[2]}>
-                                                        <div style={{ paddingTop: 20 }}>
-                                                            <ul>
-                                                                <li>Pengecekan suhu tubuh bagi petugas SPBU. Petugas dengan suhu tubuh di atas 37,3°C akan dipulangkan untuk beristirahat.</li>
+                                                        <div style={{ paddingTop: 10 }}>
+                                                            <ul className={classes.answerQuestion2}>
+                                                                <li>Pengecekan suhu tubuh bagi customer dan pegawai. Customer atau pegawai dengan suhu tubuh di atas 37,3°C akan dipulangkan untuk beristirahat.</li>
                                                                 <li>
                                                                     Pembersihan dan penyemprotan disinfektan di area yang sering tersentuh tangan, termasuk:
                                                                     <ul>
@@ -529,24 +591,22 @@ function App() {
                                             <Grid item xs={12}>
                                                 <div className={classes.faqContainer}>
                                                     <div className={classes.questionContainer} onClick={handleOpenFAQ(3)}>
-                                                        <Typography className={classes.question}>Di mana saya bisa mencari informasi lebih lanjut tentang COVID-19?</Typography>
+                                                        <Typography className={classes.question} style={{ color: faq[3] && "#fecb00" }}>Service apa yang JAG'S KITCHEN sediakan?</Typography>
                                                         <CloseIcon style={{ transform: faq[3] ? "rotate(0deg)" : "rotate(-135deg)", transition: "0.5s transform" }} />
                                                     </div>
                                                     <Collapse in={faq[3]}>
-                                                        <div style={{ paddingTop: 20 }}>
-                                                            <ul>
-                                                                <li>
-                                                                    Informasi lebih lanjut bisa dilihat di:
-                                                                    <ul>
-                                                                        <li>
-                                                                            <a target="_blank" href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public">The World Health Organization</a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a target="_blank" href="https://www.kemkes.go.id/article/view/20012900002/Kesiapsiagaan-menghadapi-Infeksi-Novel-Coronavirus.html">Kementrian Kesehatan Republik Indonesia</a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </li>
-                                                            </ul>
+                                                        <div style={{ paddingTop: 15 }}>
+                                                            <Grid container spacing={2}>
+                                                                <Grid item sm={6} md={4}>
+                                                                    <img src="/jags_2.jpeg" style={{ width: "100%", borderRadius: 12 }} />
+                                                                </Grid>
+                                                                <Grid item sm={6} md={4}>
+                                                                    <img src="/jags_1.jpeg" style={{ width: "100%", borderRadius: 12 }} />
+                                                                </Grid>
+                                                                <Grid item sm={6} md={4}>
+                                                                    <img src="/jags_3.jpeg" style={{ width: "100%", borderRadius: 12 }} />
+                                                                </Grid>
+                                                            </Grid>
                                                         </div>
                                                     </Collapse>
                                                 </div>
