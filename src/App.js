@@ -27,6 +27,11 @@ const styles = makeStyles(theme => ({
         background: "url('Jags Kitchen 37.jpg')",
         backgroundSize: "cover",
         backgroundPosition: "center",
+        position: "relative",
+
+        "& a": {
+            zIndex: 1
+        },
 
         [theme.breakpoints.down('xs')]: {
             padding: "20px 10px 10px 10px",
@@ -34,7 +39,7 @@ const styles = makeStyles(theme => ({
             "& a": {
                 display: "flex",
                 alignItems: "baseline",
-                justifyContent: "center"
+                justifyContent: "center",
             },
 
             "& img": {
@@ -169,18 +174,21 @@ const styles = makeStyles(theme => ({
     },
 
     container: {
-        margin: "-100px 15% 50px 15%",
+        margin: "0px 15% 50px 15%",
+        transform: "translateY(-135px)",
         padding: 50,
         backgroundColor: "white",
         borderRadius: 12,
         boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
         [theme.breakpoints.down('xs')]: {
             padding: 20,
-            margin: "-135px 10% 50px 10%"
+            margin: "0px 10% 50px 10%",
+            transform: "translateY(-100px)"
         },
         [theme.breakpoints.only('sm')]: {
             padding: 30,
-            margin: "-155px 10% 50px 10%"
+            margin: "0px 10% 50px 10%",
+            transform: "translateY(-120px)"
         },
     },
 }));
@@ -525,6 +533,7 @@ function App() {
                     <a href="http://localhost:3000">
                         <img id="logo-main" src="04.png" width="200" alt="Logo Thing main logo" />
                     </a>
+                    <div style={{ position: "absolute", top: 0, width: "100%", height: "100%", backgroundColor: "rgba(0, 0, 0, 0.3)" }}></div>
                 </div>
             </Grid>
             <Grid item xs={12}>
@@ -568,7 +577,7 @@ function App() {
                                                     <Collapse in={faq[2]}>
                                                         <div style={{ paddingTop: 10 }}>
                                                             <ul className={classes.answerQuestion2}>
-                                                                <li>Pengecekan suhu tubuh bagi customer dan pegawai. Customer atau pegawai dengan suhu tubuh di atas 37.5°C akan dipulangkan untuk beristirahat.</li>
+                                                                <li>Pengecekan suhu tubuh bagi semua customer dan staff JAG'S KITCHEN yg akan memasuki area resto. Setiap customer atau staff JAG'S KITCHEN dengan suhu tubuh di atas 37.5 C tidak boleh memasuki area resto.</li>
                                                                 <li>
                                                                     Pembersihan dan penyemprotan disinfektan di area yang sering tersentuh tangan, termasuk:
                                                                     <ul>
