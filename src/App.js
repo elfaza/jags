@@ -533,7 +533,7 @@ function App() {
                     <a href="http://localhost:3000">
                         <img id="logo-main" src="04.png" width="200" alt="Logo Thing main logo" />
                     </a>
-                    <div style={{ position: "absolute", top: 0, width: "100%", height: "100%", backgroundColor: "rgba(0, 0, 0, 0.3)" }}></div>
+                    <div style={{ position: "absolute", top: 0, width: "100%", height: "100%", backgroundColor: "rgba(0, 0, 0, 0.2)" }}></div>
                 </div>
             </Grid>
             <Grid item xs={12}>
