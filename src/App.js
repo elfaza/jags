@@ -558,7 +558,7 @@ function App() {
                                             <Grid item xs={12}>
                                                 <div className={classes.faqContainer}>
                                                     <div className={classes.questionContainer} onClick={handleOpenFAQ(1)}>
-                                                        <Typography className={classes.question} style={{ color: faq[1] && "#fecb00" }}>Apakah JAG'S KITCHEN akan tetap buka?</Typography>
+                                                        <Typography className={classes.question} style={{ color: faq[1] && "#fecb00" }}>Apakah JAG'S KITCHEN tetap buka dengan kondisi covid-19?</Typography>
                                                         <CloseIcon style={{ transform: faq[1] ? "rotate(0deg)" : "rotate(-135deg)", transition: "0.5s transform" }} />
                                                     </div>
                                                     <Collapse in={faq[1]}>
@@ -600,7 +600,7 @@ function App() {
                                             <Grid item xs={12}>
                                                 <div className={classes.faqContainer}>
                                                     <div className={classes.questionContainer} onClick={handleOpenFAQ(3)}>
-                                                        <Typography className={classes.question} style={{ color: faq[3] && "#fecb00" }}>Service apa yang JAG'S KITCHEN sediakan?</Typography>
+                                                        <Typography className={classes.question} style={{ color: faq[3] && "#fecb00" }}>Service apa yang JAG'S KITCHEN sediakan dengan kondisi Covid-19 ini?</Typography>
                                                         <CloseIcon style={{ transform: faq[3] ? "rotate(0deg)" : "rotate(-135deg)", transition: "0.5s transform" }} />
                                                     </div>
                                                     <Collapse in={faq[3]}>
