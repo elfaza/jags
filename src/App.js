@@ -620,6 +620,32 @@ function App() {
                                                     </Collapse>
                                                 </div>
                                             </Grid>
+                                            <Grid item xs={12}>
+                                                <div className={classes.faqContainer}>
+                                                    <div className={classes.questionContainer} onClick={handleOpenFAQ(4)}>
+                                                        <Typography className={classes.question} style={{ color: faq[4] && "#fecb00" }} >Jag’s Kitchen Food Menu list</Typography>
+                                                        <CloseIcon style={{ transform: faq[4] ? "rotate(0deg)" : "rotate(-135deg)", transition: "0.5s transform" }} />
+                                                    </div>
+                                                    <Collapse in={faq[4]}>
+                                                        <div style={{ paddingTop: 15 }}>
+                                                            <Grid container spacing={2}>
+                                                                <Grid item sm={6} md={6}>
+                                                                    <img src="/menu_1.jpeg" style={{ width: "100%", borderRadius: 12 }} />
+                                                                </Grid>
+                                                                <Grid item sm={6} md={6}>
+                                                                    <img src="/menu_2.jpeg" style={{ width: "100%", borderRadius: 12 }} />
+                                                                </Grid>
+                                                                <Grid item sm={6} md={6}>
+                                                                    <img src="/menu_3.jpeg" style={{ width: "100%", borderRadius: 12 }} />
+                                                                </Grid>
+                                                                <Grid item sm={6} md={6}>
+                                                                    <img src="/menu_4.jpeg" style={{ width: "100%", borderRadius: 12 }} />
+                                                                </Grid>
+                                                            </Grid>
+                                                        </div>
+                                                    </Collapse>
+                                                </div>
+                                            </Grid>
                                         </Grid>
                                     </Grid>
                                 </Grid>
