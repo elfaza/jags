@@ -636,6 +636,9 @@ function App() {
                                                                 <Grid item sm={6} md={4}>
                                                                     <img src="/ready_cook_menu_8.jpeg" style={{ width: "100%", borderRadius: 12 }} />
                                                                 </Grid>
+                                                                <Grid item sm={6} md={4}>
+                                                                    <img src="/ready_cook_menu_9.jpeg" style={{ width: "100%", borderRadius: 12 }} />
+                                                                </Grid>
                                                             </Grid>
                                                         </div>
                                                     </Collapse>
