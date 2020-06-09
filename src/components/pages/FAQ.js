@@ -222,11 +222,8 @@ function FAQ(props) {
     }
 
     useEffect(() => {
-        if (props.location.hash !== null && ref) {
-
-            console.log(ref.offsetTop)
-            // document.getElementsByTagName("html")[0].scrollTop = scrollPosition;
-
+        console.log(props.location.hash)
+        if ((props.location.hash === "#menu") && ref) {
             handleOpenFAQ(4)()
 
             setTimeout(function wait() {
@@ -237,8 +234,6 @@ function FAQ(props) {
 
     }, [ref])
 
-
-    console.log(document.getElementsByTagName("html")[0].scrollTop)
     return (
         <Grid container spacing={1}>
             <Grid item xs={12}>
