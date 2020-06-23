@@ -290,7 +290,7 @@ function FAQ(props) {
                                                                     Pembersihan dan penyemprotan disinfektan di area yang sering tersentuh tangan, termasuk:
                                                                     <ul>
                                                                         <li>
-                                                                            Area layanan: Handle pintu, toilet, mesin EDC dan ATM(cabang jagakarsa)
+                                                                            Area layanan: Handle pintu, toilet dan mesin EDC
                                                                         </li>
                                                                         <li>
                                                                             Area dispenser: Nozzle
