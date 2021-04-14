@@ -191,12 +191,20 @@ function FAQ(props) {
     const [images, setImages] = useState(null);
     const [ref, setRef] = useState(null)
     const menuImages = [
-        "/menu_6.jpeg",
-        "/menu_3.jpeg",
-        "/menu_2.jpeg",
-        "/menu_1.jpeg",
-        "/menu_4.jpeg",
-        "/menu_5.jpeg",
+        // "/menu_6.jpeg",
+        // "/menu_3.jpeg",
+        // "/menu_2.jpeg",
+        // "/menu_1.jpeg",
+        // "/menu_4.jpeg",
+        // "/menu_5.jpeg",
+        "/menu/Menu 2021 Jags Fiinal-1.png",
+        "/menu/Menu 2021 Jags Fiinal-2.png",
+        "/menu/Menu 2021 Jags Fiinal-3.png",
+        "/menu/Menu 2021 Jags Fiinal-4.png",
+        "/menu/Menu 2021 Jags Fiinal-5.png",
+        "/menu/Menu 2021 Jags Fiinal-6.png",
+        "/menu/Menu 2021 Jags Fiinal-7.png",
+        "/menu/Menu 2021 Jags Fiinal-8.png",
     ];
     const faq3Images = [
         "/jags_1.jpeg",
